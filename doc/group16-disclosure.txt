@@ -1,0 +1,31 @@
+Disclosure:
+
+Ankur: Mono c++ implementation, stereo cpp, single pass implementation, rds constellation python model(single pass)
+Divesh: Mono C++ imp, stereo cpp imp, threading cpp, rds (manchester decoding and differential) python,
+Rayan: Mode 1 python model + cpp model, mode 1 optimization, rds (frame synchronisation) python
+Uzair: Mode 1 python model + cpp model, mode 1 optimization, rds (frame synchronisation) python
+
+Help from peers:
+Minhaj Shah - Convolution optimization, explained the concept to us
+
+Olayiwola Bakare - Mode 1 optimization algorithm explanation, rds frame sync how to confirm output
+
+---- NOTE FOR MODE 1 ERROR -----
+When trying to run mode 1 live we encounter the following error, if we run it a few times it eventually runs but we were not able to resolve this:
+Found 1 device(s):
+ 0: Realtek, RTL2838UHIDIR, SN: 00000001
+Using device 0: Generic RTL2832U OEM
+Detached kernel driver
+Found Rafael Micro R820T tuner
+[R82XX] PLL not locked!
+Sampling at 2400000 S/s.
+Tuned to 99900000 Hz.
+Tuner gain set to automatic.
+Reading samples in async mode...
+Allocating 15 zero-copy buffers
+Playing raw data 'stdin' : Signed 16 bit Little Endian, Rate 48000 Hz, Stereo
+Signal caught, exiting!
+Signal caught, exiting!
+Short write, samples lost, exiting!
+
+and also its fine in mode 0, so we're not sure if its some optimization issue in mode 1 or something to do with the pi. It also works fine with recorded raw audio files

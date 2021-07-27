@@ -1,0 +1,35 @@
+// cpp implementation of convolution block python lab2
+
+def convolution(b, x, s):
+    N = len(b)
+    Yn = [0]*len(x)
+	
+    for n in range(len(x)):
+		count=0
+    	for i in range(N):
+    		if (n-i>0):
+    			Yn[n] += b[i]*x[n-i]
+    		else:
+				Yn[n] += s[len(s)-1-count]*b[i]
+    			count+=1
+    s = x[-(len(b)-1):]
+    return Yn, s
+
+// cpp imp
+void convolution(std::vector<float> &y, const std::vector<float> &x, const std::vector<float> &h,int decim)
+{
+	// allocate memory for the output (filtered) data
+	y.resize(ceil((x.size()+h.size()-1)/decim), 0.0);
+
+	int y_non_decim_size = x.size()+h.size()-1;
+	int d = 0;
+	for(int i = 0; i<y_non_decim_size; i+=decim){
+		for(int k = 0; k<h.size(); k++){
+			if(i-k>=0 && i-k < x.size()){
+				y[d] += x[i-k]*h[k];
+			}
+		}
+		d++;
+	}
+	y = std::vector<float>(y.begin(),y.begin()+(x.size()/decim));
+}
